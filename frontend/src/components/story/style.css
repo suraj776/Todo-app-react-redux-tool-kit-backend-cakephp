@@ -1,0 +1,80 @@
+.schedule-card{
+    border-radius: 50px;
+    border: none;
+    margin: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    min-height: 400px;
+    margin-bottom: 50px;
+}
+.schedule-header{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.schedule-heading{
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px;
+}
+.icon-button{
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #c70808;
+    color: #fff !important;
+    height: 45px;
+}
+.form-button{
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #c70808;
+    color: #fff !important;
+    height: 45px;
+}
+.form-button:hover{
+    background-color: #fff;
+    color: black !important;
+    width: 100%;
+}
+.schedule-item{
+    display: flex;
+    justify-content: space-between;
+    line-break: anywhere;
+}
+.schedule-ietm-box{
+    display: flex;
+}
+.schedule-ietm-box p{
+    margin: auto;
+}
+.menu{
+    position: absolute;
+    z-index: 1;
+    background: #c70808;
+    padding: 10px;
+    border-radius: 22px;
+    text-align: center;
+}
+.schedule-card-active{
+    border: 2px solid #c70808;
+}
+.strike-story{
+    text-decoration: line-through;
+}
+@media only screen and (max-width:1024px) {
+    .schedule-card{
+        height: 63vh;
+    }
+}
+@media screen and (max-width:768px) {
+    .schedule-card{
+        height: 63vh;
+    }
+}
+@media screen and (max-width:480px) {
+    .schedule-card{
+        height: 63vh;
+    }
+
+}

@@ -1,0 +1,23 @@
+# Uncomment the following to prevent the httpoxy vulnerability
+# See: https://httpoxy.org/
+#<IfModule mod_headers.c>
+#    RequestHeader unset Proxy
+#</IfModule>
+# Allow requests from any origin
+Header set Access-Control-Allow-Origin "*"
+
+# Allow specific headers
+Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+
+# Allow specific methods
+Header always set Access-Control-Allow-Methods "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+
+
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteRule    ^(\.well-known/.*)$ $1 [L]
+    RewriteRule    ^$    webroot/    [L]
+    RewriteRule    (.*) webroot/$1    [L]
+</IfModule>
+
+

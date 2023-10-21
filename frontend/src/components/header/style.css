@@ -1,0 +1,237 @@
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+.header-wrapper {
+  width: 100%;
+  background-color: #c70808;
+  position: fixed;
+  z-index: 1;
+}
+.header-bar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 20px;
+  background-color: transparent;
+  color: #fff;
+  align-items: center;
+  padding-right: 40px;
+  min-height: 100px;
+}
+.header-link {
+  width: 100%;
+  height: 100%;
+}
+.header-list,
+.header-list-auth {
+  display: flex;
+  flex-direction: row;
+  /* line-height: 35px; */
+  cursor: pointer;
+  margin-bottom: 0px;
+}
+.header-item:first-child {
+  margin-right: 100px;
+}
+.header-item:not(:first-child) {
+  font-weight: 600;
+  font-size: 20px;
+}
+.header-item,
+.header-auth-item {
+  padding: 8px;
+  margin: auto;
+}
+.header-item:hover {
+  background-color: #fff;
+  transition: 0.8s;
+  border-radius: 10px;
+  color: #000;
+}
+
+.brand-name {
+  font-size: 25px;
+}
+.header-button {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #fff;
+  color: #000 !important;
+}
+.primary-button {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #c70808;
+  color: #fff !important;
+}
+.toggl-button {
+  margin-left: auto;
+  display: none;
+
+}
+.display-none-res2{
+    display: none;
+}
+.brand-name-res{
+    display: none;
+}
+.user-profile{
+  display: flex;
+  flex-direction: column;
+}
+.user-image{
+  height: 70px;
+  width: 70px;
+  /* margin-right: 100px; */
+}
+.user-image img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50px;
+}
+.dropdown-menu-userdetail {
+  padding: 0.7rem 0rem;
+  font-size: 20px;
+  line-height: 22px;
+  border: none;
+  box-shadow: 0 10px 30px 0 rgba(31, 45, 61, 0.1);
+  border-radius: 0.5rem;
+  z-index: 10;
+  color: #000;
+  background-color: #c70808;
+  position: absolute;
+  margin-top: 70px;
+  width: 18%;
+  margin-left: -200px;
+  padding: 20px;
+}
+.dropdown-menu-userdetail {
+  display: flex;
+  align-items: flex-start;
+  visibility: hidden;
+  opacity: 0;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.user-profile:hover > .dropdown-menu-userdetail {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.6s;
+}
+
+.user-detail{
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  text-align: justify;
+}
+.user-detail-name{
+  font-weight: 500;
+}
+.user-detail-email{
+  font-size: 16px;
+}
+@media only screen and (max-width:1400px) {
+  .dropdown-menu-userdetail{
+    width: 25%;
+    margin-left: -243px;
+    margin-right: 0px;
+
+  }
+}
+@media only screen and (max-width:1024px) {
+  .dropdown-menu-userdetail{
+    width: 60%;
+    margin-left: -179px;
+    margin-right: 0px;
+
+  }
+
+}
+@media screen and (max-width:768px) {
+
+    .dropdown-menu-userdetail{
+      width: 60%;
+      margin-left: -179px;
+      margin-right: 0px;
+  
+    }
+}
+@media screen and (max-width: 480px) {
+  .header-wrapper {
+    text-align: end;
+    padding: 20px;
+  }
+  .header-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .toggl-button{
+    display: block;
+  }
+  .header-list{
+    width: 100%;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    margin-bottom: 30px;
+    margin-left: 9px;
+  }
+  .header-item{
+    width: 100%;
+    text-align: start;
+  }
+  .header-list-auth{
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .header-item:first-child {
+    display: none;
+  }
+  .display-none-res1{
+    display: none;
+  }
+  .display-none-res2{
+    display: unset;
+  }
+  .header-item:hover {
+    width: 100%;
+    background-color: #fff;
+    text-align: start;
+    transition: 0.8s;
+    border-radius: 10px;
+    color: #000;
+  }
+  .brand-name-res{
+    position: absolute;
+    display: block;
+  }
+
+  .header-list-auth{
+    width: 100%;
+    text-align: end;
+  }
+  .header-auth-item{
+    width: 100%;
+    
+  }
+  .dropdown-menu-userdetail{
+    width: 80%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* .page-wrapper{
+    margin-top:300px;
+} */
+  /* .signup-wrapper{
+    flex-direction: column;
+    width: auto;
+  } */
+
+}
