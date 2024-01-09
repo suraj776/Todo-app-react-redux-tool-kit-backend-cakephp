@@ -1,0 +1,51 @@
+version: '2'
+# define all services
+services:
+  # our service is called CakePHP ;-)
+  cakephp:
+    # we want to use the image which is build from our Dockerfile
+    build: backend/
+    # apache is running on port 80 but we want to expose this to port 4000 on our local machine
+    ports:
+      - "4001:80"
+    # we depending on the mysql backend
+    depends_on:
+      - mysql
+    # we mount the working dir into the container, handy for development 
+    volumes:
+      - .:/var/www/html/
+    environment:
+      #- SECURITY_SALT=ashjg23697sds97139871298ashk  
+      - MYSQL_URL=mysql
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=root
+  mysql:
+    # we use the mysql base image, version 5.6.36
+    image: mysql:5.6.36
+    # we mount a datavolume to make sure we don't loose data
+    volumes:
+       - mysql_data:/var/lib/mysql
+    # setting some envvars to create the DB
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=cakephp
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8082:80"
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: root
+  web-app:
+    container_name: web-app
+    image: web-app
+    build: ./frontend
+    # hostname: localhost
+    # network_mode: host
+    ports:
+      - 3000:3000
+    restart: always
+volumes:
+    mysql_data:
