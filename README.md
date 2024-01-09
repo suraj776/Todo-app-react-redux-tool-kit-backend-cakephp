@@ -11,3 +11,12 @@
   2. npm start<br>
 
 Now you are good to go !!!.<br>
+
+To run App using docker<br>
+
+1. docker-compose build<br>
+2. docker-compose up<br>
+
+<strong>Aternatively.<strong>
+
+ docker-compose up -d
