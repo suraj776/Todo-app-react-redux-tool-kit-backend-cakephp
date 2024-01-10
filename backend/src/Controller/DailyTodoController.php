@@ -153,10 +153,10 @@ class DailyTodoController extends AppController
             $dailyTodo = $this->DailyTodo->patchEntity($dailyTodo, $this->request->getData());
             if (isset($this->request->getData()['completed'])) {
                 if($this->request->getData()['completed'] == "True"){
-                    $dailyTodo->completed = True;
+                    $dailyTodo->completed = 1;
                     
                 }else {
-                    $dailyTodo->completed = False;
+                    $dailyTodo->completed = 0;
                 }
             } 
             try {

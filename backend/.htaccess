@@ -1,16 +1,18 @@
 # Uncomment the following to prevent the httpoxy vulnerability
 # See: https://httpoxy.org/
-#<IfModule mod_headers.c>
-#    RequestHeader unset Proxy
-#</IfModule>
-# Allow requests from any origin
-Header set Access-Control-Allow-Origin "*"
+<IfModule mod_headers.c>
+    # Uncomment the following to prevent the httpoxy vulnerability
+    # See: https://httpoxy.org/
+    
+    # Allow requests from any origin
+    Header set Access-Control-Allow-Origin "*"
 
-# Allow specific headers
-Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+    # Allow specific headers
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
 
-# Allow specific methods
-Header always set Access-Control-Allow-Methods "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+    # Allow specific methods
+    Header always set Access-Control-Allow-Methods "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+</IfModule>
 
 
 <IfModule mod_rewrite.c>

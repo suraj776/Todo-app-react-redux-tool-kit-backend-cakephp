@@ -95,8 +95,8 @@ class Application extends BaseApplication
         // `new RoutingMiddleware($this, '_cake_routes_')`
         add(new RoutingMiddleware($this))
             ->
-        add(new CORSMiddleware($this))
-        ->
+        // add(new CORSMiddleware($this))
+        // ->
         // Parse various types of encoded request bodies so that they are
         // available as array through $request->getData()
         // https://book.cakephp.org/4/en/controllers/middleware.html#body-parser-middleware

@@ -29,11 +29,8 @@ class CORSMiddleware implements MiddlewareInterface
     {
         if ($request->getHeader('Origin')) {
             $allowedDomains = [
-                'https://myapp.it',
-                'https://www.myapp.it',
-                'http://localhost:3000'
+                
             ];
-
             $origins = $request->getHeader('Origin');
             $lastOrigin = end($origins);
             if (in_array($lastOrigin, $allowedDomains, true)) {

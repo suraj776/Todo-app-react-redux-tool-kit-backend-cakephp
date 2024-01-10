@@ -16,10 +16,10 @@ return [
      * true: Errors and warnings shown.
      */
     'debug' => filter_var(env('DEBUG', false), FILTER_VALIDATE_BOOLEAN),
-//     'Cors' => [
-//         'exceptionRenderer' => false,
-//         'ExposeHeaders' => true
-//     ],
+    'Cors' => [
+        'exceptionRenderer' => false,
+        'ExposeHeaders' => true
+    ],
     /*
      * Configure basic information about the application.
      *
@@ -304,10 +304,11 @@ return [
             'driver' => Mysql::class,
             'persistent' => false,
             'timezone' => 'UTC',
+            'host'=>'mysql',
             'username' => 'root',
-            'password' => 'admin@123',
+            'password' => 'root',
 
-            'database' => 'productivity_app',
+            'database' => 'cakephp',
             /*
              * For MariaDB/MySQL the internal default changed from utf8 to utf8mb4, aka full utf-8 support, in CakePHP 3.6
              */

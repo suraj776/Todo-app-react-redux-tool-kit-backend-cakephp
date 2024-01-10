@@ -41,8 +41,4 @@ class JwtToken
         return JWT::encode($payload, $this->public_key);
     }
 
-    public function parseToken($token)
-    {
-        return JWT::encode($token);
-    }
 }
