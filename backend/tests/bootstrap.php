@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 use Cake\Core\Configure;
 use Cake\Datasource\ConnectionManager;
+use Cake\TestSuite\Fixture\SchemaLoader;
 use Migrations\TestSuite\Migrator;
 
 /**
@@ -61,5 +62,5 @@ session_id('cli');
 // hook into your migration tool of choice here or
 // load schema from a SQL dump file with
 // use Cake\TestSuite\Fixture\SchemaLoader;
-// (new SchemaLoader())->loadSqlFiles('./tests/schema.sql', 'test');
+// (new SchemaLoader())->loadSqlFiles('./tests/cakephp.sql', 'test');
 (new Migrator())->run();

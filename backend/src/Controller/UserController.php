@@ -62,7 +62,7 @@ class UserController extends AppController
     public function add()
     {
         $data = [];
-        $data['status']="200";
+        $data['status']="201";
         $user = $this->User->newEmptyEntity();
         if ($this->request->is('post')) {
             $user = $this->User->patchEntity($user, $this->request->getData());
@@ -73,6 +73,7 @@ class UserController extends AppController
 
             try {
                 if ($this->User->save($user)) {
+                    $this->response = $this->response->withStatus(201);
                     $data['data'] = $user;
                     $data['message'] = "Registered sucessfully";
                 } else {
@@ -86,18 +87,19 @@ class UserController extends AppController
                 $data['error'] = $e->getMessage();
             }
         }
-        $this->set([
-            'data' => $data,
-            '_serialize' => [
-                'data'
-            ]
-        ]);
+        $this->viewBuilder()->setOption('serialize', ['data']);
+
+        // Pass the data to the view
+        //  (serialization is handled automatically)
+        $this->set(compact('data'));
     }
 
     public function login()
     {
         $data = [];
+        // print_r($this->request->getData());
         $result = $this->Auth->identify();
+        // print_r($result);die("hello");
         if (! empty($result)) {
             $user = $result;
             $jwt = new JwtToken();
@@ -115,12 +117,11 @@ class UserController extends AppController
                 'error'=>"Email/Password is wrong"
             ];
         }
-        $this->set([
-            'data' => $data,
-            '_serialize' => [
-                'data'
-            ]
-        ]);
+        $this->viewBuilder()->setOption('serialize', ['data']);
+
+        // Pass the data to the view
+        //  (serialization is handled automatically)
+        $this->set(compact('data'));
 //         $this->viewBuilder()->setOption('serialize', 'data');
     }
 

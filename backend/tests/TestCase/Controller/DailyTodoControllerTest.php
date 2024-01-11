@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Controller;
 
+use App\Auth\JwtToken;
 use App\Controller\DailyTodoController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
@@ -23,8 +24,19 @@ class DailyTodoControllerTest extends TestCase
      */
     protected $fixtures = [
         'app.DailyTodo',
+        'app.user',
     ];
+    protected function setUp(): void
+    {
+        $data["id"]=1;
+        $jwt=new JwtToken();
+        $token=$jwt->generateToken($data);
+        $this->configRequest([
+            'headers' => ['Authorization' => 'Bearer '.$token],
+        ]);
+        parent::setUp();
 
+    }
     /**
      * Test index method
      *
@@ -33,7 +45,10 @@ class DailyTodoControllerTest extends TestCase
      */
     public function testIndex(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('api/todo/1.json');
+        $this->assertResponseOk();
+        $this->assertResponseContains('"user_id": 1');
+        
     }
 
     /**
@@ -42,10 +57,10 @@ class DailyTodoControllerTest extends TestCase
      * @return void
      * @uses \App\Controller\DailyTodoController::view()
      */
-    public function testView(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
+    // public function testView(): void
+    // {
+    //     $this->markTestIncomplete('Not implemented yet.');
+    // }
 
     /**
      * Test add method
@@ -55,7 +70,9 @@ class DailyTodoControllerTest extends TestCase
      */
     public function testAdd(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->post('api/todo/add.json',['story'=>"New data",'day'=>'moday','completed'=>'False','saved'=>1,'user_id'=>1]);
+        $this->assertResponseCode(201);
+        $this->assertResponseContains('"story": "New data"');    
     }
 
     /**
@@ -66,7 +83,9 @@ class DailyTodoControllerTest extends TestCase
      */
     public function testEdit(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->post('api/todo/edit/1.json',['story'=>"New data"]);
+        $this->assertResponseOk();
+        $this->assertResponseContains('"story": "New data"');    
     }
 
     /**
@@ -77,6 +96,7 @@ class DailyTodoControllerTest extends TestCase
      */
     public function testDelete(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
+        $this->delete('api/todo/delete/1.json');
+        $this->assertResponseCode(200); 
+     }
 }

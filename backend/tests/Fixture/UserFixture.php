@@ -26,9 +26,9 @@ class UserFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'name' => 'Lorem ipsum dolor sit amet',
-                'username' => 'Lorem ipsum dolor sit amet',
-                'password' => 'Lorem ipsum dolor sit amet',
+                'name' => 'suraj kumar',
+                'username' => 'test@test.com',
+                'password' => 'admin@123',
                 'created_on' => '2023-10-14 07:19:31',
             ],
         ];

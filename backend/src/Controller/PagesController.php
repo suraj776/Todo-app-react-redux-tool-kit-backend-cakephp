@@ -35,7 +35,8 @@ class PagesController extends AppController
     {
         parent::initialize();
         $this->Auth->allow([
-            'display'
+            'display',
+            'home'
         ]);
     }
     /**
@@ -76,5 +77,9 @@ class PagesController extends AppController
             }
             throw new NotFoundException();
         }
+    }
+
+    public function home(){
+
     }
 }

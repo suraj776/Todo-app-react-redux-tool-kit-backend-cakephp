@@ -52,12 +52,11 @@ class DailyTodoController extends AppController
         ])->all();
         $dailyTodo = $dailyTodo;
         $data['data'] = $dailyTodo;
-        $this->set([
-            'data' => $data,
-            '_serialize' => [
-                'data'
-            ]
-        ]);
+        $this->viewBuilder()->setOption('serialize', ['data']);
+
+        // Pass the data to the view
+        //  (serialization is handled automatically)
+        $this->set(compact('data'));
     }
 
     /**
@@ -74,7 +73,11 @@ class DailyTodoController extends AppController
             'contain' => []
         ]);
 
-        $this->set(compact('dailyTodo'));
+        $this->viewBuilder()->setOption('serialize', ['data']);
+
+        // Pass the data to the view
+        //  (serialization is handled automatically)
+        $this->set(compact('data'));
     }
 
     /**
@@ -86,7 +89,7 @@ class DailyTodoController extends AppController
     {
         // die("dc");
         $data = [];
-        $data['status'] = "200";
+        $data['status'] = "201";
         $dailyTodo = $this->DailyTodo->newEmptyEntity();
         if ($this->request->is('post')) {
             $dailyTodo = $this->DailyTodo->patchEntity($dailyTodo, $this->request->getData());
@@ -109,23 +112,27 @@ class DailyTodoController extends AppController
                 if ($this->DailyTodo->save($dailyTodo)) {
                     $data['data'] = $dailyTodo;
                     $data['message'] = "data saved sucessfully";
+                    $this->response = $this->response->withStatus(201);
                 } else {
                     $data['status'] = "403";
                     $data['data'] = $dailyTodo;
                     $data['error'] = $dailyTodo->getErrors();
+                    $this->response = $this->response->withStatus(403);
+
                 }
             } catch (DatabaseException $e) {
                 $data['status'] = "403";
                 $data['data'] = $dailyTodo;
                 $data['error'] = $e->getMessage();
+                $this->response = $this->response->withStatus(403);
+
             }
         }
-        $this->set([
-            'data' => $data,
-            '_serialize' => [
-                'data'
-            ]
-        ]);
+        $this->viewBuilder()->setOption('serialize', ['data']);
+
+        // Pass the data to the view
+        //  (serialization is handled automatically)
+        $this->set(compact('data'));
     }
 
     /**
@@ -174,12 +181,11 @@ class DailyTodoController extends AppController
                 $data['error'] = $e->getMessage();
             }
         }
-        $this->set([
-            'data' => $data,
-            '_serialize' => [
-                'data'
-            ]
-        ]);
+        $this->viewBuilder()->setOption('serialize', ['data']);
+
+        // Pass the data to the view
+        //  (serialization is handled automatically)
+        $this->set(compact('data'));
     }
 
     /**
@@ -207,11 +213,10 @@ class DailyTodoController extends AppController
             $data['status'] = "403";
             $data['error'] = $dailyTodo->getErrors();
         }
-        $this->set([
-            'data' => $data,
-            '_serialize' => [
-                'data'
-            ]
-        ]);
+        $this->viewBuilder()->setOption('serialize', ['data']);
+
+        // Pass the data to the view
+        //  (serialization is handled automatically)
+        $this->set(compact('data'));
     }
 }
